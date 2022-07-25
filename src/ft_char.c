@@ -12,8 +12,7 @@
 
 #include "printf.h"
 
-/*	conversion to char type
-*/
+//	conversion to char type
 
 int	ft_char(unsigned char c)
 {

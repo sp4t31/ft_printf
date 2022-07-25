@@ -13,22 +13,20 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include <stdarg.h>
 # include <stddef.h>
 //# include <stdlib.h> --malloc
 # include <unistd.h>
-# include <stdarg.h>
 
-//	SRC
+// SRC
 int		ft_printf(const char *, ...);
-int		conversion_specifier(const char *str, va_list ap);
+int		ft_conversion_specifier(const char &str, va_list ap);
 int		ft_char(unsigned char c);
 int		ft_str(char *str);
 int		ft_hex_void_ptr(void *ptr);
 void	ft_putnbr(int n);
-int		ft_signed_dec(int d);
-int		ft_unsigned_dec(unsigned int u);
-
-// UTILS
+int		ft_calculate_bytes(unsigned int x, int base);
 void	ft_putnbr(int n);
+void	ft_putnbr_hex(unsigned int n, int case);
 
 #endif

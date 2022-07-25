@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str.c                                           :+:      :+:    :+:   */
+/*   ft_calculate_bytes.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: spatel <spatel@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 17:31:53 by spatel            #+#    #+#             */
-/*   Updated: 2022/07/22 16:59:29 by spatel           ###   ########.fr       */
+/*   Created: 2022/07/25 16:18:22 by spatel            #+#    #+#             */
+/*   Updated: 2022/07/25 16:18:22 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-/*	conversion to char type
+/*	calculates the bytes printed from a number in decimal 
+	format (base 10) or hexadecimal format (base 16)
 */
 
-int	ft_str(char *str)
+int	ft_calculate_bytes(unsigned int x, int base)
 {
 	int	printed_bytes;
 
 	printed_bytes = 0;
-	while (*str)
+	if (x == 0)
+		printed_bytes++;
+	while (x != 0)
 	{
-		write(1, &str, 1);
-		str++;
+		x /= base;
 		printed_bytes++;
 	}
 	return (printed_bytes);

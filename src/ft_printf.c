@@ -12,32 +12,38 @@
 
 #include "ft_printf.h"
 
-int	conversion_specifier(const char &str, va_list ap)
+/*
+-- error checking
+-- hex void pointer
+-- write return
+-- write percentage error
+-- can convert char to *char? double on them
+*/
+
+int	ft_conversion_specifier(char a, va_list ap)
 {
-	if (*str == 'c')
+	if (a == 'c')
 		return (ft_char(va_arg(ap, int)));
-		//convert to char
-	else if (*str == 's')
+	else if (a == 's')
 		return (ft_str(va_arg(ap, *char)));
-		//convert to string
-	else if (*str == 'p')
+	else if (a == 'd' || a == 'i')
+		return (ft_putnbr(va_arg(ap, long int)));
+	else if (a == 'u')
+		return (ft_putnbr(va_arg(ap, unsigned int)));
+	else if (a == 'p')
 		return (ft_void_ptr_hex(va_arg(ap, *void)));
-		//convert to void pointer in hexadecimal format
-	else if (*str == 'd' || *str == 'i')
-		return (ft_signed_dec(va_arg(ap, double)));
-		//convert to int
-	else if (*str == 'u')
-		return (ft_unsigned_dec(va_arg(ap, unsigned int)));
-		//convert to unsigned int
-	else if (*str == 'x')
-		return (ft_unsigned_hex_lc(va_arg(ap, unsigned int)));
-		//unsigned int to unsigned hex (lowercase)
-	else if (*str == 'X')
-		return (ft_unsigned_hex_uc(va_arg(ap, unsigned int)));
-		//unsigned int to unsigned hex (uppercase)
-	else 
-		return(0);
+	else if (a == 'x')
+		return (ft_putnbr_hex(va_arg(ap, unsigned int), 0));
+	else if (a == 'X')
+		return (ft_putnbr_hex(va_arg(ap, unsigned int), 1));
+	else
+		return (0);
 }
+
+/*	writes in the console arguments aerted to specific types 
+	based on specifiers following '%' and returns the number 
+	of bytes printed
+*/
 
 int	ft_printf(const char *str, ...)
 {
@@ -58,7 +64,7 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		else if (str[i] == '%')
-			printed_bytes += conversion_specifier(&str[i + 1], ap);
+			printed_bytes += ft_conversion_specifier(&str[i + 1], ap);
 		else
 			printed_bytes += write(1, &str[i], 1);
 		i++;

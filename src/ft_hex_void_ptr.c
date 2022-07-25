@@ -12,10 +12,9 @@
 
 #include "ft_printf.h"
 
-/*	conversion to void pointer in hexadecimal format
-*/
+//	conversion to void pointer in hexadecimal format
 
 int	ft_hex_void_ptr(void *ptr)
 {
-
+	
 }

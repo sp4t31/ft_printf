@@ -18,8 +18,12 @@ SRC =	ft_printf.c \
 		ft_hex_void_ptr.c \
 		ft_signed_dec.c \
 		ft_unsigned_dec.c \
-		ft_unsigned_hex_lc \
-		ft_unsigned_hex_uc
+		ft_unsigned_hex_lc.c \
+		ft_unsigned_hex_uc.c \
+		ft_calculate_bytes.c \
+		ft_putnbr.c \
+		ft_putnbr_hex.c
+
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror

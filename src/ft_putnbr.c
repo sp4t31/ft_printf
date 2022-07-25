@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned_dec.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 15:25:56 by spatel            #+#    #+#             */
-/*   Updated: 2022/07/22 17:08:00 by spatel           ###   ########.fr       */
+/*   Created: 2022/07/21 16:35:59 by spatel            #+#    #+#             */
+/*   Updated: 2022/07/21 16:37:03 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_unsigned_dec(unsigned int u);
+void	ft_putnbr(long int n)
 {
-	int	printed_bytes;
-	
-	if (u)
+	if (n < 0)
 	{
-		//write unsigned int n
-		ft_putnbr(unsigned int n);
-		//calculate no.bytes printed
-		printed_bytes = 0;
-		if (u = 0)
-			printed_bytes++;
-		while (u != 0)
-		{
-			u /= 10;
-			printed_bytes++;
-		}
-		return (printed_bytes);
+		write(1, '-', 1);
+		ft_putnbr(-n);
 	}
-	return (0);
+	else if (n > 9)
+	{
+		ft_putnbr(n / 10);
+		write(1, n % 10 + '0', 1);
+	}
+	else
+		write(1, n + '0', 1);
+	return (ft_calculate_bytes(n, 10));
 }
