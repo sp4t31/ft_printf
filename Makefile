@@ -15,7 +15,11 @@ NAME	= printf.a
 SRC =	ft_printf.c \
 		ft_char.c \
 		ft_str.c \
-		ft_hex_void_ptr.c
+		ft_hex_void_ptr.c \
+		ft_signed_dec.c \
+		ft_unsigned_dec.c \
+		ft_unsigned_hex_lc \
+		ft_unsigned_hex_uc
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
@@ -28,10 +32,10 @@ $(NAME):
 	ar -rcs $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
