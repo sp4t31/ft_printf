@@ -6,11 +6,11 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:16:33 by spatel            #+#    #+#             */
-/*   Updated: 2022/07/28 18:11:41 by spatel           ###   ########.fr       */
+/*   Updated: 2022/07/28 18:41:29 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 /*	print unsigned int in hexadecimal 
 	a == 'x' || a == 'p'  |  lowercase format '7b3fe'

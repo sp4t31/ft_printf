@@ -6,11 +6,11 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 16:35:59 by spatel            #+#    #+#             */
-/*   Updated: 2022/07/28 18:17:28 by spatel           ###   ########.fr       */
+/*   Updated: 2022/07/28 18:41:33 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "../includes/ft_printf.h"
 
 /*	prints signed or unsigned int in decimal
 */

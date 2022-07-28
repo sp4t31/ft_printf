@@ -12,13 +12,7 @@
 
 NAME	= printf.a
 
-SRC =	ft_print.c \
-		ft_str.c \
-		ft_putnbr.c \
-		ft_putnbr_hex.c \
-		ft_calculate_bytes.c
-
-#SRC =	./src/
+SRC =	./src/*.c
 
 CC		= clang
 CFLAGS	= -Wall -Wextra -Werror

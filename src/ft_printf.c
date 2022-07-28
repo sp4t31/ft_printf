@@ -6,11 +6,11 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 18:03:04 by spatel            #+#    #+#             */
-/*   Updated: 2022/07/28 18:03:47 by spatel           ###   ########.fr       */
+/*   Updated: 2022/07/28 18:41:25 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 /*
 -- error checking
@@ -20,12 +20,13 @@
 -- can convert char to *char? double on them
 */
 
+
 int	ft_conversion_specifier(char a, va_list ap)
 {
 	unsigned int	store_arg;
 
 	if (a == 'c' || a == 's')
-		return (ft_str(va_arg(ap, *char)));
+		return (ft_str(va_arg(ap, char*)));
 	else if (a == 'd' || a == 'i' || a == 'u')
 	{
 		store_arg = va_arg(ap, long long int);
@@ -34,7 +35,7 @@ int	ft_conversion_specifier(char a, va_list ap)
 	}
 	else if (a == 'x' || a == 'X' || a == 'p')
 	{
-		store_arg = va_arg(ap, void *);
+		store_arg = va_arg(ap, void*);
 		ft_putnbr_hex(&store_arg, &a);
 		return (ft_calculate_bytes(&store_arg, &a, 16));
 	}
@@ -49,8 +50,8 @@ int	ft_conversion_specifier(char a, va_list ap)
 
 int	ft_printf(const char *str, ...)
 {
-	size_t	i;
-	size_t	printed_bytes;
+	int	i;
+	int	printed_bytes;
 	va_list	ap;
 	char	c;
 
@@ -66,7 +67,7 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		else if (str[i] == '%')
-			printed_bytes += ft_conversion_specifier(&str[i + 1], ap);
+			printed_bytes += ft_conversion_specifier(str[i + 1], ap);
 		else
 			printed_bytes += write(1, &str[i], 1);
 		i++;

@@ -6,11 +6,11 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:31:53 by spatel            #+#    #+#             */
-/*   Updated: 2022/07/28 18:12:31 by spatel           ###   ########.fr       */
+/*   Updated: 2022/07/28 18:42:56 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "../includes/ft_printf.h"
 
 /*	prints char or string type
 */
