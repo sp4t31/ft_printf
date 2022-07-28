@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spatel <spatel@student.42adel.org.au>      +#+  +:+       +#+        */
+/*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 17:33:56 by spatel            #+#    #+#             */
-/*   Updated: 2022/04/28 17:33:56 by spatel           ###   ########.fr       */
+/*   Created: 2022/07/28 18:03:04 by spatel            #+#    #+#             */
+/*   Updated: 2022/07/28 18:03:47 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,22 @@
 
 int	ft_conversion_specifier(char a, va_list ap)
 {
-	if (a == 'c')
-		return (ft_char(va_arg(ap, int)));
-	else if (a == 's')
+	unsigned int	store_arg;
+
+	if (a == 'c' || a == 's')
 		return (ft_str(va_arg(ap, *char)));
-	else if (a == 'd' || a == 'i')
-		return (ft_putnbr(va_arg(ap, long int)));
-	else if (a == 'u')
-		return (ft_putnbr(va_arg(ap, unsigned int)));
-	else if (a == 'p')
-		return (ft_void_ptr_hex(va_arg(ap, *void)));
-	else if (a == 'x')
-		return (ft_putnbr_hex(va_arg(ap, unsigned int), 0));
-	else if (a == 'X')
-		return (ft_putnbr_hex(va_arg(ap, unsigned int), 1));
+	else if (a == 'd' || a == 'i' || a == 'u')
+	{
+		store_arg = va_arg(ap, long long int);
+		ft_putnbr(&store_arg);
+		return (ft_calculate_bytes(&store_arg, 10));
+	}
+	else if (a == 'x' || a == 'X' || a == 'p')
+	{
+		store_arg = va_arg(ap, void *);
+		ft_putnbr_hex(&store_arg, &a);
+		return (ft_calculate_bytes(&store_arg, &a, 16));
+	}
 	else
 		return (0);
 }

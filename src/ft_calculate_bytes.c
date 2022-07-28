@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calculate_bytes.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spatel <spatel@student.42adel.org.au>      +#+  +:+       +#+        */
+/*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:18:22 by spatel            #+#    #+#             */
-/*   Updated: 2022/07/25 16:18:22 by spatel           ###   ########.fr       */
+/*   Updated: 2022/07/28 18:13:23 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@
 	format (base 10) or hexadecimal format (base 16)
 */
 
-int	ft_calculate_bytes(unsigned int x, int base)
+int	ft_calculate_bytes(void *n, char a, int base)
 {
 	int	printed_bytes;
 
 	printed_bytes = 0;
-	if (x == 0)
-		printed_bytes++;
-	while (x != 0)
+	if (a == 'p')
 	{
-		x /= base;
+		write(1)
+		printed_bytes += 2;
+	}
+	if (n <= 0)
+		printed_bytes++;
+	while (n != 0)
+	{
+		n /= base;
 		printed_bytes++;
 	}
 	return (printed_bytes);

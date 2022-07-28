@@ -15,18 +15,14 @@
 
 # include <stdarg.h>
 # include <stddef.h>
-//# include <stdlib.h> --malloc
 # include <unistd.h>
 
 // SRC
-int		ft_printf(const char *, ...);
-int		ft_conversion_specifier(const char &str, va_list ap);
-int		ft_char(unsigned char c);
+int		ft_printf(const char *str, ...);
+int		ft_conversion_specifier(char a, va_list ap);
 int		ft_str(char *str);
-int		ft_hex_void_ptr(void *ptr);
-void	ft_putnbr(int n);
-int		ft_calculate_bytes(unsigned int x, int base);
-void	ft_putnbr(int n);
-void	ft_putnbr_hex(unsigned int n, int case);
+void	ft_putnbr(long long int n);
+void	ft_putnbr_hex(void *n, char a);
+int		ft_calculate_bytes(void *n, char a, int base);
 
 #endif

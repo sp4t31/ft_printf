@@ -12,34 +12,33 @@
 
 NAME	= printf.a
 
-SRC =	ft_printf.c \
-		ft_char.c \
+SRC =	ft_print.c \
 		ft_str.c \
-		ft_hex_void_ptr.c \
-		ft_signed_dec.c \
-		ft_unsigned_dec.c \
-		ft_unsigned_hex_lc.c \
-		ft_unsigned_hex_uc.c \
-		ft_calculate_bytes.c \
 		ft_putnbr.c \
-		ft_putnbr_hex.c
+		ft_putnbr_hex.c \
+		ft_calculate_bytes.c
 
+#SRC =	./src/
 
-CC		= gcc
+CC		= clang
 CFLAGS	= -Wall -Wextra -Werror
 OBJ		= $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
+	@echo "Compiling ft_printf archive"
 	$(CC) $(CFLAGS) -I . -c $(SRC)
 	ar -rcs $(NAME) $(OBJ)
 
 clean:
+	@echo "Removing object files"
 	rm -rf $(OBJ)
 
 fclean: clean
+	@echo "Removing archive file"
 	rm -rf $(NAME)
+	
 
 re: fclean all
 
