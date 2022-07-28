@@ -12,9 +12,13 @@
 
 #include "ft_printf.h"
 
-//	conversion to void pointer in hexadecimal format
+//	prints the memory address of the void pointer argument in hexadecimal format
 
 int	ft_hex_void_ptr(void *ptr)
 {
+	int	printed_bytes;
 	
+	printed_bytes = 2;
+	write(1, "0x", 2);
+	printed_bytes += write(1, &ptr, ft_strlen(&ptr)); 
 }
