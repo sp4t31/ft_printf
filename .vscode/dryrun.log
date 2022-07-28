@@ -1,7 +1,0 @@
-make.exe --dry-run --always-make --keep-going --print-directory
-make: Entering directory 'c:/Users/sonya/OneDrive/OneDrive backup stuff/Desktop/ft_printf'
-gcc -Wall -Wextra -Werror -I . -c ft_printf.c ft_char.c ft_str.c ft_hex_void_ptr.c ft_signed_dec.c ft_unsigned_dec.c ft_unsigned_hex_lc.c ft_unsigned_hex_uc.c ft_calculate_bytes.c ft_putnbr.c ft_putnbr_hex.c
-ar -rcs printf.a ft_printf.o ft_char.o ft_str.o ft_hex_void_ptr.o ft_signed_dec.o ft_unsigned_dec.o ft_unsigned_hex_lc.o ft_unsigned_hex_uc.o ft_calculate_bytes.o ft_putnbr.o ft_putnbr_hex.o
- 
-make: Leaving directory 'c:/Users/sonya/OneDrive/OneDrive backup stuff/Desktop/ft_printf'
- 
