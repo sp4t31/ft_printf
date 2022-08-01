@@ -6,7 +6,7 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 18:03:04 by spatel            #+#    #+#             */
-/*   Updated: 2022/07/28 18:41:25 by spatel           ###   ########.fr       */
+/*   Updated: 2022/08/01 16:29:56 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 -- write return
 -- write percentage error
 -- can convert char to *char? double on them
+-- passing & to not create duplicate variables?
 */
 
 
@@ -30,14 +31,14 @@ int	ft_conversion_specifier(char a, va_list ap)
 	else if (a == 'd' || a == 'i' || a == 'u')
 	{
 		store_arg = va_arg(ap, long long int);
-		ft_putnbr(&store_arg);
-		return (ft_calculate_bytes(&store_arg, 10));
+		ft_putnbr(store_arg);
+		return (ft_calculate_bytes(store_arg, a, 10));
 	}
 	else if (a == 'x' || a == 'X' || a == 'p')
 	{
-		store_arg = va_arg(ap, void*);
-		ft_putnbr_hex(&store_arg, &a);
-		return (ft_calculate_bytes(&store_arg, &a, 16));
+		store_arg = va_arg(ap, unsigned int);
+		ft_putnbr_hex(store_arg, a);
+		return (ft_calculate_bytes(store_arg, a, 16));
 	}
 	else
 		return (0);
@@ -53,17 +54,15 @@ int	ft_printf(const char *str, ...)
 	int	i;
 	int	printed_bytes;
 	va_list	ap;
-	char	c;
 
 	i = 0;
-	c = '%';
 	printed_bytes = 0;
 	va_start(ap, str);
 	while (str[i])
 	{
 		if (str[i] == '%' && str[i + 1] == '%')
 		{
-			printed_bytes += write(1, &c, 1);
+			printed_bytes += ft_putchar('%');
 			i++;
 		}
 		else if (str[i] == '%')

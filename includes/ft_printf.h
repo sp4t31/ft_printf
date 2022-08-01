@@ -20,8 +20,10 @@
 int		ft_printf(const char *str, ...);
 int		ft_conversion_specifier(char a, va_list ap);
 int		ft_str(char *str);
+int		ft_putchar(char c);
 void	ft_putnbr(long long int n);
-void	ft_putnbr_hex(void *n, char a);
-int		ft_calculate_bytes(void *n, char a, int base);
+void	ft_putnbr_hex(unsigned int n, char a);
+int		ft_calculate_bytes(long long n, char a, int base);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:16:33 by spatel            #+#    #+#             */
-/*   Updated: 2022/07/28 18:41:29 by spatel           ###   ########.fr       */
+/*   Updated: 2022/08/01 16:26:17 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 	ft_conv... calls with &n
 */
 
-void	ft_putnbr_hex(void *n, char a)
+void	ft_putnbr_hex(unsigned int n, char a)
 {
 	if (n > 15)
 	{
@@ -30,10 +30,10 @@ void	ft_putnbr_hex(void *n, char a)
 	else
 	{
 		if (n > 9 && (a == 'x' || a == 'p'))
-			write(1, n % 16 + 87, 1);
+			ft_putchar(n % 16 + 87);
 		if (n > 9 && a == 'X')
-			write(1, n % 16 + 55, 1);
+			ft_putchar(n % 16 + 55);
 		else if (n <= 9)
-			write(1, n + '0', 1);
+			ft_putchar(n + '0');
 	}
 }
