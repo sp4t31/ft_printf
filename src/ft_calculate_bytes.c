@@ -13,7 +13,8 @@
 #include "../includes/ft_printf.h"
 
 /*	calculates the bytes printed from a number in decimal 
-	format (base 10) or hexadecimal format (base 16)
+	(base 10) or a number/memory address in hexadecimal 
+	(base 16)
 */
 
 int	ft_calculate_bytes(long long n, char a, int base)

@@ -18,12 +18,10 @@
 
 // SRC
 int		ft_printf(const char *str, ...);
-int		ft_conversion_specifier(char a, va_list ap);
-int		ft_str(char *str);
-int		ft_putchar(char c);
-void	ft_putnbr(long long int n);
-void	ft_putnbr_hex(unsigned int n, char a);
+int		ft_index(char a, va_list ap);
+int		ft_print_str(char *str);
+void	ft_print_nbr(long long int n, char a, int base);
 int		ft_calculate_bytes(long long n, char a, int base);
-
+int		ft_putchar(char c);
 
 #endif

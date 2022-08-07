@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_str.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: spatel <spatel@student.42adel.org.au>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 16:35:59 by spatel            #+#    #+#             */
-/*   Updated: 2022/08/01 16:22:23 by spatel           ###   ########.fr       */
+/*   Created: 2022/08/04 15:40:05 by spatel            #+#    #+#             */
+/*   Updated: 2022/08/04 15:40:05 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-/*	prints signed or unsigned int in decimal
+
+/*	prints char or string type
 */
 
-void	ft_putnbr(long long int n)
+int	ft_print_str(char *str)
 {
-	if (n < 0)
+	int	printed_bytes;
+
+	printed_bytes = 0;
+	while (*str)
 	{
-		ft_putchar('-');
-		return (ft_putnbr(-n));
+		ft_putchar(*str);
+		str++;
+		printed_bytes++;
 	}
-	else if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
-	}
-	else
-		ft_putchar(n + '0');
+	return (printed_bytes);
 }

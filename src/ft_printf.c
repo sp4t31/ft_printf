@@ -21,24 +21,25 @@
 -- passing & to not create duplicate variables?
 */
 
-
-int	ft_conversion_specifier(char a, va_list ap)
+int	ft_index(char a, va_list ap)
 {
-	unsigned int	store_arg;
+	long long int	store_arg;
+	int				base;
 
-	if (a == 'c' || a == 's')
-		return (ft_str(va_arg(ap, char*)));
-	else if (a == 'd' || a == 'i' || a == 'u')
+	if (a == 'c')
+		return (ft_putchar(va_arg(ap, int)));
+	else if (a == 's')
+		return (ft_print_str(va_arg(ap, char *)));
+	else if (a == 'd' || a == 'i' || a == 'u'|| a == 'x' 
+			|| a == 'X' || a == 'p')
 	{
 		store_arg = va_arg(ap, long long int);
-		ft_putnbr(store_arg);
-		return (ft_calculate_bytes(store_arg, a, 10));
-	}
-	else if (a == 'x' || a == 'X' || a == 'p')
-	{
-		store_arg = va_arg(ap, unsigned int);
-		ft_putnbr_hex(store_arg, a);
-		return (ft_calculate_bytes(store_arg, a, 16));
+		if (a == 'd' || a == 'i' || a == 'u')
+			base = 10;
+		else
+			base = 16;
+		ft_print_nbr(store_arg, a, base);
+		return (ft_calculate_bytes(store_arg, a, base));
 	}
 	else
 		return (0);
@@ -51,8 +52,8 @@ int	ft_conversion_specifier(char a, va_list ap)
 
 int	ft_printf(const char *str, ...)
 {
-	int	i;
-	int	printed_bytes;
+	int		i;
+	int		printed_bytes;
 	va_list	ap;
 
 	i = 0;
@@ -66,7 +67,7 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		else if (str[i] == '%')
-			printed_bytes += ft_conversion_specifier(str[i + 1], ap);
+			printed_bytes += ft_index(str[i + 1], ap);
 		else
 			printed_bytes += write(1, &str[i], 1);
 		i++;
@@ -77,8 +78,8 @@ int	ft_printf(const char *str, ...)
 
 int	main(void)
 {
-	char*	str = "blah";
+	char	*str = "blah";
 	char	b = 'B';
 	char	c = 'C';
-	ft_printf("%s %c %c", str , b , c);
+	ft_printf("%s %c %c", str, b, c);
 }
