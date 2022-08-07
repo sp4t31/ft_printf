@@ -6,7 +6,7 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 18:03:04 by spatel            #+#    #+#             */
-/*   Updated: 2022/08/01 16:29:56 by spatel           ###   ########.fr       */
+/*   Updated: 2022/08/07 22:01:41 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,19 @@
 
 int	ft_index(char a, va_list ap)
 {
-	long long int	store_arg;
-	int				base;
+	size_t	store_arg;
+	size_t	base;
 
-	if (a == 'c')
+	if (a == '%')
+		return (ft_putchar('%'));
+	else if (a == 'c')
 		return (ft_putchar(va_arg(ap, int)));
 	else if (a == 's')
 		return (ft_print_str(va_arg(ap, char *)));
-	else if (a == 'd' || a == 'i' || a == 'u'|| a == 'x' 
-			|| a == 'X' || a == 'p')
+	else if (a == 'd' || a == 'i' || a == 'u' || a == 'x'
+		|| a == 'X' || a == 'p')
 	{
-		store_arg = va_arg(ap, long long int);
+		store_arg = va_arg(ap, size_t);
 		if (a == 'd' || a == 'i' || a == 'u')
 			base = 10;
 		else
@@ -61,14 +63,9 @@ int	ft_printf(const char *str, ...)
 	va_start(ap, str);
 	while (str[i])
 	{
-		if (str[i] == '%' && str[i + 1] == '%')
-		{
-			printed_bytes += ft_putchar('%');
-			i++;
-		}
-		else if (str[i] == '%')
-			printed_bytes += ft_index(str[i + 1], ap);
-		else
+		if (str[i] == '%' && str[++i])
+			printed_bytes += ft_index(str[i], ap);
+		else if (str[i] && str[i] != '%')
 			printed_bytes += write(1, &str[i], 1);
 		i++;
 	}
@@ -76,10 +73,9 @@ int	ft_printf(const char *str, ...)
 	return (printed_bytes);
 }
 
+/*
 int	main(void)
 {
-	char	*str = "blah";
-	char	b = 'B';
-	char	c = 'C';
-	ft_printf("%s %c %c", str, b, c);
-}
+	printf("\n%i\n", ft_printf("%i %u %d", -10, -10, -10));
+	printf("\n%i\n", printf("%i %u %d", -10, -10, -10));
+}*/

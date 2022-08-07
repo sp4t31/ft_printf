@@ -16,32 +16,33 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
+INCLUDES = -I./includes/
+
 SRC = ./src/ft_printf.c ./src/ft_print_str.c \
 		./src/ft_print_nbr.c ./src/ft_calculate_bytes.c \
 		./src/ft_putchar.c
 
-OBJ = $(SRC:*.c=*.o)
-MV_OBJ = mv *.o src
+OBJ = $(SRC:.c=.o)
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $(<:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo Creating $(NAME)
+	@echo Creating $(NAME)...
 	$(CC) $(CFLAGS) -I . -c $(SRC)
-	MV_OBJ
+	mv *.o src
 	ar -rcs $(NAME) $(OBJ)
 
-#run:
-#	@$(MAKE) && ./$(NAME)
-
 clean:
-	@echo Removing object files
+	@echo Removing object files...
 	$(RM) $(OBJ)
 #	Removes any files matching $(OBJ), asthe object
 #	files are already in the archive
 
 fclean: clean
-	@echo Removing archive file
+	@echo Removing archive file...
 	$(RM) $(NAME)
 
 re: fclean all

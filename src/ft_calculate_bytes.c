@@ -6,7 +6,7 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:18:22 by spatel            #+#    #+#             */
-/*   Updated: 2022/08/01 15:53:31 by spatel           ###   ########.fr       */
+/*   Updated: 2022/08/07 21:10:20 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	(base 16)
 */
 
-int	ft_calculate_bytes(long long n, char a, int base)
+int	ft_calculate_bytes(size_t n, char a, size_t base)
 {
 	int	printed_bytes;
 
