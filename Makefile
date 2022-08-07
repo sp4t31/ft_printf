@@ -11,35 +11,38 @@ MAKEFLAGS += --warn-undefined-variables
 # Receive warning when referring to make variables
 # that don't exist
 
-NAME	= ft_printf.a
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+NAME = libftprintf.a
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -rf
 
-SRC =	./src/ft_printf.c ./src/ft_print_str.c \
+SRC = ./src/ft_printf.c ./src/ft_print_str.c \
 		./src/ft_print_nbr.c ./src/ft_calculate_bytes.c \
 		./src/ft_putchar.c
 
-OBJ		= $(SRC:.c=.o)
-#OBJ_DEST = mv *.o src
-OBJ_DEST = objects
+OBJ = $(SRC:*.c=*.o)
+MV_OBJ = mv *.o src
 
 all: $(NAME)
 
-$(NAME):
-	@echo "Creating $(NAME)"
-	$(CC) $(CFLAGS) $(SRC)
-
+$(NAME): $(OBJ)
+	@echo Creating $(NAME)
+	$(CC) $(CFLAGS) -I . -c $(SRC)
+	MV_OBJ
 	ar -rcs $(NAME) $(OBJ)
 
+#run:
+#	@$(MAKE) && ./$(NAME)
+
 clean:
-	@echo "Removing object files"
-	rm -rf $(OBJ)
+	@echo Removing object files
+	$(RM) $(OBJ)
 #	Removes any files matching $(OBJ), asthe object
 #	files are already in the archive
 
 fclean: clean
-	@echo "Removing archive file"
-	rm -rf $(NAME)
+	@echo Removing archive file
+	$(RM) $(NAME)
 
 re: fclean all
 
