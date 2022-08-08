@@ -19,10 +19,11 @@
 
 // SRC
 int		ft_printf(const char *str, ...);
-int		ft_index(char a, va_list ap);
+int		ft_index(char a, va_list ap, int *i);
 int		ft_print_str(char *str);
-void	ft_print_nbr(long long int n, char a, int base)
-int		ft_calculate_bytes(long long int n, char a, size_t base);
+void	ft_print_unsigned(long long int n, char a, int base);
+void	ft_print_int(int n);
+int		ft_print_nbr(long long int n, char a, int base);
 int		ft_putchar(int c);
 
 #endif

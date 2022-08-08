@@ -6,7 +6,7 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 18:03:04 by spatel            #+#    #+#             */
-/*   Updated: 2022/08/07 22:01:41 by spatel           ###   ########.fr       */
+/*   Updated: 2022/08/08 18:31:14 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 -- write percentage error
 -- can convert char to *char? double on them
 -- passing & to not create duplicate variables?
+-- *i -1
+-- % without something following it  (return (-1))?
 */
 
-int	ft_index(char a, va_list ap)
+int	ft_index(char a, va_list ap, int *i)
 {
-	size_t	store_arg;
-	size_t	base;
+	long long int	store_arg;
+	int				base;
 
 	if (a == '%')
 		return (ft_putchar('%'));
@@ -35,16 +37,16 @@ int	ft_index(char a, va_list ap)
 	else if (a == 'd' || a == 'i' || a == 'u' || a == 'x'
 		|| a == 'X' || a == 'p')
 	{
-		store_arg = va_arg(ap, size_t);
-		if (a == 'd' || a == 'i' || a == 'u')
+		store_arg = va_arg(ap, long long int);
+		if (a == 'i' || a == 'd' || a == 'u')
 			base = 10;
 		else
 			base = 16;
-		ft_print_nbr(store_arg, a, base);
-		return (ft_calculate_bytes(store_arg, a, base));
+		return (ft_print_nbr(store_arg, a, base));
 	}
 	else
-		return (0);
+		*i = *i - 1;
+	return (0);
 }
 
 /*	writes in the console arguments aerted to specific types 
@@ -63,20 +65,19 @@ int	ft_printf(const char *str, ...)
 	va_start(ap, str);
 	while (str[i])
 	{
-		if (str[i]) == '%' && (str[i + 1] != '%' ||
-		if (str[i] == '%' && str[i + 1])
-			printed_bytes += ft_index(str[++i], ap);
-		else if (str[i] && str[i] != '%')
+		if (str[i] == '%')
+			printed_bytes += ft_index(str[++i], ap, &i);
+		else if (str[i])
 			printed_bytes += write(1, &str[i], 1);
 		i++;
 	}
 	va_end(ap);
 	return (printed_bytes);
 }
-
 /*
 int	main(void)
 {
 	printf("\n%i\n", ft_printf("%i %u %d", -10, -10, -10));
 	printf("\n%i\n", printf("%i %u %d", -10, -10, -10));
+	ft_printf("%% %\n");
 }*/
