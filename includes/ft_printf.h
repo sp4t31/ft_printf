@@ -21,8 +21,8 @@
 int		ft_printf(const char *str, ...);
 int		ft_index(char a, va_list ap);
 int		ft_print_str(char *str);
-void	ft_print_nbr(size_t n, char a, size_t base);
-int		ft_calculate_bytes(size_t n, char a, size_t base);
-int		ft_putchar(char c);
+void	ft_print_nbr(long long int n, char a, int base)
+int		ft_calculate_bytes(long long int n, char a, size_t base);
+int		ft_putchar(int c);
 
 #endif

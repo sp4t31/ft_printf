@@ -17,7 +17,7 @@
 	(base 16)
 */
 
-int	ft_calculate_bytes(size_t n, char a, size_t base)
+int	ft_calculate_bytes(long long int n, char a, size_t base)
 {
 	int	printed_bytes;
 

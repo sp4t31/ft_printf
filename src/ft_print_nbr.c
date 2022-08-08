@@ -18,7 +18,7 @@
 	a == 'p'	|  memory location '0x7ff683844003'
 */
 
-void	ft_print_nbr(size_t n, char a, size_t base, int i)
+void	ft_print_nbr(long long int n, char a, int base)
 {
 	if (a == 'p')
 	{
@@ -38,12 +38,34 @@ void	ft_print_nbr(size_t n, char a, size_t base, int i)
 	else if (n < base)
 	{
 		if (n > 9 && (a == 'x' || a == 'p'))
-			ft_putchar(n % 16 + 87);
+			ft_putchar((int)n % 16 + 87);
 		else if (n > 9 && a == 'X')
-			ft_putchar(n % 16 + 55);
+			ft_putchar((int)n % 16 + 55);
 		else
-			ft_putchar(n + '0');
+			ft_putchar((int)n + '0');
 	}
-	else
-		*i = *i -1;
 }
+
+/*
+void	ft_print_dec_int(int n)
+{
+	if (n < 0)
+	{
+		ft_putchar('-');
+		return (ft_print_dec_int(-n));
+	}
+
+	if (n >= 10)
+	{
+		ft_print_dec_int(n / 10);
+		ft_print_dec_int(n % 10);
+	}
+	else if (n < 10)
+		ft_putchar(n + '0');
+}
+
+int main(void)
+{
+	ft_print_dec_int(-123);
+	ft_print_nbr(-123, 'i', 10);
+}*/

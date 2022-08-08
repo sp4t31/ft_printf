@@ -63,8 +63,9 @@ int	ft_printf(const char *str, ...)
 	va_start(ap, str);
 	while (str[i])
 	{
-		if (str[i] == '%' && str[++i])
-			printed_bytes += ft_index(str[i], ap);
+		if (str[i]) == '%' && (str[i + 1] != '%' ||
+		if (str[i] == '%' && str[i + 1])
+			printed_bytes += ft_index(str[++i], ap);
 		else if (str[i] && str[i] != '%')
 			printed_bytes += write(1, &str[i], 1);
 		i++;
