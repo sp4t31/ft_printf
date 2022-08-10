@@ -15,15 +15,15 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h>
 
 // SRC
 int		ft_printf(const char *str, ...);
-int		ft_index(char a, va_list ap, int *i);
+int		ft_indexer(char a, va_list ap, int *i);
 int		ft_print_str(char *str);
-void	ft_print_unsigned(long long int n, char a, int base);
-void	ft_print_int(int n);
-int		ft_print_nbr(long long int n, char a, int base);
+void	ft_print_unsigned_int(unsigned long n, char a, unsigned int base);
+void	ft_print_int(long int n);
 int		ft_putchar(int c);
+int		ft_calc_bytes_int(long int n);
+int		ft_calc_bytes_unsigned_int(unsigned long n, char a);
 
 #endif

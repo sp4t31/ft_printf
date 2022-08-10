@@ -6,7 +6,7 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 18:03:04 by spatel            #+#    #+#             */
-/*   Updated: 2022/08/08 18:31:14 by spatel           ###   ########.fr       */
+/*   Updated: 2022/08/10 18:52:15 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,18 @@
 -- % without something following it  (return (-1))?
 */
 
-int	ft_index(char a, va_list ap, int *i)
+int	ft_indexer(char a, va_list ap, int *i)
 {
-	long long int	store_arg;
-	int				base;
-
 	if (a == '%')
 		return (ft_putchar('%'));
 	else if (a == 'c')
 		return (ft_putchar(va_arg(ap, int)));
 	else if (a == 's')
 		return (ft_print_str(va_arg(ap, char *)));
-	else if (a == 'd' || a == 'i' || a == 'u' || a == 'x'
-		|| a == 'X' || a == 'p')
-	{
-		store_arg = va_arg(ap, long long int);
-		if (a == 'i' || a == 'd' || a == 'u')
-			base = 10;
-		else
-			base = 16;
-		return (ft_print_nbr(store_arg, a, base));
-	}
+	else if (a == 'd' || a == 'i')
+		return (ft_calc_bytes_int(va_arg(ap, long int)));
+	else if (a == 'u' || a == 'x' || a == 'X' || a == 'p')
+		return (ft_calc_bytes_unsigned_int(va_arg(ap, unsigned long long), a));
 	else
 		*i = *i - 1;
 	return (0);
@@ -66,7 +57,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-			printed_bytes += ft_index(str[++i], ap, &i);
+			printed_bytes += ft_indexer(str[++i], ap, &i);
 		else if (str[i])
 			printed_bytes += write(1, &str[i], 1);
 		i++;
