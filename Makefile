@@ -19,8 +19,8 @@ RM = rm -rf
 INCLUDES = -I./includes/
 
 SRC = ./src/ft_printf.c ./src/ft_print_str.c \
-		./src/ft_calc_bytes_int.c ./src/ft_calc_bytes_unsigned_int.c \
-		./src/ft_putchar.c
+		./src/ft_int.c ./src/ft_unsigned_int.c \
+		./src/ft_putchar.c ./src/ft_ptr_address.c
 
 OBJ = $(SRC:.c=.o)
 

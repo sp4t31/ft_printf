@@ -6,7 +6,7 @@
 /*   By: spatel <spatel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 18:03:04 by spatel            #+#    #+#             */
-/*   Updated: 2022/08/10 18:52:15 by spatel           ###   ########.fr       */
+/*   Updated: 2022/08/11 15:22:22 by spatel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,19 @@ int	ft_indexer(char a, va_list ap, int *i)
 	else if (a == 's')
 		return (ft_print_str(va_arg(ap, char *)));
 	else if (a == 'd' || a == 'i')
-		return (ft_calc_bytes_int(va_arg(ap, long int)));
-	else if (a == 'u' || a == 'x' || a == 'X' || a == 'p')
-		return (ft_calc_bytes_unsigned_int(va_arg(ap, unsigned long long), a));
+		return (ft_int(va_arg(ap, int)));
+	else if (a == 'p')
+		return (ft_ptr_address(va_arg(ap, unsigned long)));
+	else if (a == 'u' || a == 'x' || a == 'X')
+		return (ft_unsigned_int(va_arg(ap, unsigned int), a));
 	else
 		*i = *i - 1;
 	return (0);
 }
 
-/*	writes in the console arguments aerted to specific types 
-	based on specifiers following '%' and returns the number 
-	of bytes printed
+/*	writes a string in the console with the option to add 
+	multiple data types through variadic arguments and returns
+	the number of bytes printed
 */
 
 int	ft_printf(const char *str, ...)

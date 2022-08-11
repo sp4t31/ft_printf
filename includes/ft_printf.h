@@ -20,10 +20,12 @@
 int		ft_printf(const char *str, ...);
 int		ft_indexer(char a, va_list ap, int *i);
 int		ft_print_str(char *str);
-void	ft_print_unsigned_int(unsigned long n, char a, unsigned int base);
-void	ft_print_int(long int n);
+void	ft_print_unsigned_int(unsigned int n, char a, unsigned int base);
+void	ft_print_int(int n);
 int		ft_putchar(int c);
-int		ft_calc_bytes_int(long int n);
-int		ft_calc_bytes_unsigned_int(unsigned long n, char a);
+int		ft_int(int n);
+int		ft_unsigned_int(unsigned int n, char a);
+int		ft_ptr_address(unsigned long n);
+void	ft_print_ptr_address(unsigned long n);
 
 #endif
